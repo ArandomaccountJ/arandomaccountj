@@ -1,0 +1,271 @@
+
+<html>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var cookie = document.createElement('div');
+cookie.innerHTML = 'Cookie';
+cookie.style.width = '100px';
+cookie.style.height = '100px';
+cookie.style.backgroundColor = '#ff0';
+cookie.style.borderRadius = '50%';
+cookie.style.position = 'absolute';
+cookie.style.top = '50%';
+cookie.style.left = '50%';
+cookie.style.marginLeft = '-50px';
+cookie.style.marginTop = '-50px';
+cookie.style.cursor = 'pointer';
+document.body.appendChild(cookie);
+var score = 0;
+cookie.onclick = function() {
+  score++;
+  document.title = 'Score: ' + score;
+};
+
+var upgrades = document.createElement('div');
+upgrades.style.position = 'absolute';
+upgrades.style.top = '0';
+upgrades.style.left = '0';
+upgrades.style.width = '200px';
+upgrades.style.height = '100%';
+upgrades.style.backgroundColor = '#eee';
+upgrades.style.overflow = 'auto';
+document.body.appendChild(upgrades);
+var upgrade = function(name, cost, effect) {
+  var button = document.createElement('div');
+  button.innerHTML = name + ' (' + cost + ')';
+  button.style.padding = '5px';
+  button.style.cursor = 'pointer';
+  button.onclick = function() {
+    if (score >= cost) {
+      score -= cost;
+      effect();
+      document.title = 'Score: ' + score;
+    }
+  };
+  upgrades.appendChild(button);
+};
+upgrade('Grandma', 50, function() {
+  cookie.onclick = function() {
+    score += 2;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Farm', 500, function() {
+  cookie.onclick = function() {
+    score += 10;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Factory', 5000, function() {
+  cookie.onclick = function() {
+    score += 100;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Mine', 50000, function() {
+  cookie.onclick = function() {
+    score += 1000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Shipment', 500000, function() {
+  cookie.onclick = function() {
+    score += 10000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Alchemy Lab', 5000000, function() {
+  cookie.onclick = function() {
+    score += 100000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Portal', 50000000, function() {
+  cookie.onclick = function() {
+    score += 1000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Time Machine', 500000000, function() {
+  cookie.onclick = function() {
+    score += 10000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Antimatter Condenser', 5000000000, function() {
+  cookie.onclick = function() {
+    score += 100000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Prism', 50000000000, function() {
+  cookie.onclick = function() {
+    score += 1000000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Chancemaker', 500000000000, function() {
+  cookie.onclick = function() {
+    score += 10000000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Fractal Engine', 5000000000000, function() {
+  cookie.onclick = function() {
+    score += 100000000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Javascript Console', 50000000000000, function() {
+  cookie.onclick = function() {
+    score += 1000000000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Quantum Conundrum', 500000000000000, function() {
+  cookie.onclick = function() {
+    score += 10000000000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Warp Drive', 5000000000000000, function() {
+  cookie.onclick = function() {
+    score += 100000000000000;
+    document.title = 'Score: ' + score;
+  };
+});
+upgrade('Ambrosia', 50000000000000000, function() {
+  cookie.onclick = function() {
+    score += 1000000000000000;
+    document.title = 'Score: ' + score;
+};
+});
+
+var counter = document.createElement('div');
+counter.style.position = 'absolute';
+counter.style.top = '0';
+counter.style.right = '0';
+counter.style.padding = '5px';
+counter.style.backgroundColor = '#eee';
+document.body.appendChild(counter);
+setInterval(function() {
+  counter.innerHTML = score + ' cookies';
+}, 50);
+
+upgrade('Auto-Clicker', 100, function() {
+  setInterval(function() {
+    score++;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x10', 1000, function() {
+  setInterval(function() {
+    score += 10;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x100', 10000, function() {
+  setInterval(function() {
+    score += 100;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x1000', 100000, function() {
+  setInterval(function() {
+    score += 1000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x10000', 1000000, function() {
+  setInterval(function() {
+    score += 10000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x100000', 10000000, function() {
+  setInterval(function() {
+    score += 100000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x1000000', 100000000, function() {
+  setInterval(function() {
+    score += 1000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x10000000', 1000000000, function() {
+  setInterval(function() {
+    score += 10000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x100000000', 10000000000, function() {
+  setInterval(function() {
+    score += 100000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x1000000000', 100000000000, function() {
+  setInterval(function() {
+    score += 1000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x10000000000', 1000000000000, function() {
+  setInterval(function() {
+    score += 10000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x100000000000', 10000000000000, function() {
+  setInterval(function() {
+    score += 100000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x1000000000000', 100000000000000, function() {
+  setInterval(function() {
+    score += 1000000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x10000000000000', 1000000000000000, function() {
+  setInterval(function() {
+    score += 10000000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x100000000000000', 10000000000000000, function() {
+  setInterval(function() {
+    score += 100000000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x1000000000000000', 100000000000000000, function() {
+  setInterval(function() {
+    score += 1000000000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x10000000000000000', 1000000000000000000, function() {
+  setInterval(function() {
+    score += 10000000000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+upgrade('Auto-Clicker x100000000000000000', 10000000000000000000, function() {
+  setInterval(function() {
+    score += 100000000000000000;
+    document.title = 'Score: ' + score;
+  }, 1000);
+});
+});
+        </script>
+    </head>
+    <body style="margin: 0;">
+        
+    </body>
+</html>
