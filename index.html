@@ -1,0 +1,208 @@
+
+<html>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var pixelArt = document.createElement('div');
+pixelArt.style.width = '100%';
+pixelArt.style.height = '100%';
+pixelArt.style.backgroundColor = '#000000';
+document.body.appendChild(pixelArt);
+
+var pixelSize = 30;
+var pixelColor = '#FFFFFF';
+
+function makePixel(x, y) {
+  var pixel = document.createElement('div');
+  pixel.style.width = pixelSize + 'px';
+  pixel.style.height = pixelSize + 'px';
+  pixel.style.backgroundColor = pixelColor;
+  pixel.style.position = 'absolute';
+  pixel.style.left = x + 'px';
+  pixel.style.top = y + 'px';
+  pixel.onclick = function() {
+    pixel.style.backgroundColor = pixelColor;
+  };
+  pixelArt.appendChild(pixel);
+}
+
+for (var x = 0; x < pixelArt.offsetWidth; x += pixelSize) {
+  for (var y = 0; y < pixelArt.offsetHeight; y += pixelSize) {
+    makePixel(x, y);
+  }
+}
+
+var colorPicker = document.createElement('div');
+colorPicker.style.width = '100%';
+colorPicker.style.height = '10%';
+colorPicker.style.backgroundColor = '#FFFFFF';
+document.body.appendChild(colorPicker);
+
+var colors = ['#000000', '#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#00FFFF', '#FF00FF'];
+
+function makeColor(color) {
+  var colorButton = document.createElement('div');
+  colorButton.style.width = '10%';
+  colorButton.style.height = '100%';
+  colorButton.style.backgroundColor = color;
+  colorButton.onclick = function() {
+    pixelColor = color;
+  };
+  colorPicker.appendChild(colorButton);
+}
+
+for (var i = 0; i < colors.length; i++) {
+  makeColor(colors[i]);
+}
+
+var fillButton = document.createElement('div');
+fillButton.style.width = '50px';
+fillButton.style.height = '50px';
+fillButton.style.fontSize = '20px';
+fillButton.style.lineHeight = '50px';
+fillButton.style.textAlign = 'center';
+fillButton.style.border = '1px solid #000000';
+fillButton.style.boxSizing = 'border-box';
+fillButton.style.display = 'inline-block';
+fillButton.style.verticalAlign = 'top';
+fillButton.innerHTML = 'Fill';
+fillButton.onclick = function() {
+  for (var i = 0; i < pixelArt.children.length; i++) {
+    pixelArt.children[i].style.backgroundColor = pixelColor;
+  }
+};
+document.body.appendChild(fillButton);
+
+var buttons = document.getElementsByTagName('div');
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].style.border = '1px solid #000000';
+  buttons[i].style.boxSizing = 'border-box';
+  buttons[i].style.display = 'inline-block';
+  buttons[i].style.verticalAlign = 'top';
+}
+
+var randomButton = document.createElement('div');
+randomButton.style.width = '75px';
+randomButton.style.height = '50px';
+randomButton.style.fontSize = '20px';
+randomButton.style.lineHeight = '50px';
+randomButton.style.textAlign = 'center';
+randomButton.style.border = '1px solid #000000';
+randomButton.style.boxSizing = 'border-box';
+randomButton.style.display = 'inline-block';
+randomButton.style.verticalAlign = 'top';
+randomButton.innerHTML = 'Random';
+randomButton.onclick = function() {
+  for (var i = 0; i < pixelArt.children.length; i++) {
+    pixelArt.children[i].style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+  }
+};
+document.body.appendChild(randomButton);
+
+var gridButton = document.createElement('div');
+gridButton.style.width = '100px';
+gridButton.style.height = '50px';
+gridButton.style.fontSize = '20px';
+gridButton.style.lineHeight = '50px';
+gridButton.style.textAlign = 'center';
+gridButton.style.border = '1px solid #000000';
+gridButton.style.boxSizing = 'border-box';
+gridButton.style.display = 'inline-block';
+gridButton.style.verticalAlign = 'top';
+gridButton.innerHTML = 'Hide Grid';
+gridButton.onclick = function() {
+  for (var i = 0; i < pixelArt.children.length; i++) {
+    pixelArt.children[i].style.border = '0px solid #000000';
+  }
+};
+document.body.appendChild(gridButton);
+
+var showGridButton = document.createElement('div');
+showGridButton.style.width = '100px';
+showGridButton.style.height = '50px';
+showGridButton.style.fontSize = '20px';
+showGridButton.style.lineHeight = '50px';
+showGridButton.style.textAlign = 'center';
+showGridButton.style.border = '1px solid #000000';
+showGridButton.style.boxSizing = 'border-box';
+showGridButton.style.display = 'inline-block';
+showGridButton.style.verticalAlign = 'top';
+showGridButton.innerHTML = 'Show Grid';
+showGridButton.onclick = function() {
+  for (var i = 0; i < pixelArt.children.length; i++) {
+    pixelArt.children[i].style.border = '1px solid #000000';
+  }
+};
+document.body.appendChild(showGridButton);
+
+var animation = [];
+var animationIndex = 0;
+var animationInterval;
+
+var recordButton = document.createElement('div');
+recordButton.style.width = '100px';
+recordButton.style.height = '50px';
+recordButton.style.fontSize = '20px';
+recordButton.style.lineHeight = '50px';
+recordButton.style.textAlign = 'center';
+recordButton.style.border = '1px solid #000000';
+recordButton.style.boxSizing = 'border-box';
+recordButton.style.display = 'inline-block';
+recordButton.style.verticalAlign = 'top';
+recordButton.innerHTML = 'Record';
+recordButton.onclick = function() {
+  animation.push([]);
+  for (var i = 0; i < pixelArt.children.length; i++) {
+    animation[animation.length - 1].push(pixelArt.children[i].style.backgroundColor);
+  }
+};
+document.body.appendChild(recordButton);
+
+var playButton = document.createElement('div');
+playButton.style.width = '100px';
+playButton.style.height = '50px';
+playButton.style.fontSize = '20px';
+playButton.style.lineHeight = '50px';
+playButton.style.textAlign = 'center';
+playButton.style.border = '1px solid #000000';
+playButton.style.boxSizing = 'border-box';
+playButton.style.display = 'inline-block';
+playButton.style.verticalAlign = 'top';
+playButton.innerHTML = 'Play';
+playButton.onclick = function() {
+  animationIndex = 0;
+  animationInterval = setInterval(function() {
+    for (var i = 0; i < pixelArt.children.length; i++) {
+      pixelArt.children[i].style.backgroundColor = animation[animationIndex][i];
+    }
+    animationIndex++;
+    if (animationIndex >= animation.length) {
+      animationIndex = 0;
+    }
+  }, 1000);
+};
+document.body.appendChild(playButton);
+
+var stopButton = document.createElement('div');
+stopButton.style.width = '100px';
+stopButton.style.height = '50px';
+stopButton.style.fontSize = '20px';
+stopButton.style.lineHeight = '50px';
+stopButton.style.textAlign = 'center';
+stopButton.style.border = '1px solid #000000';
+stopButton.style.boxSizing = 'border-box';
+stopButton.style.display = 'inline-block';
+stopButton.style.verticalAlign = 'top';
+stopButton.innerHTML = 'Stop';
+stopButton.onclick = function() {
+  clearInterval(animationInterval);
+};
+document.body.appendChild(stopButton);
+});
+        </script>
+    </head>
+    <body style="margin: 0;">
+       
+    </body>
+</html>
