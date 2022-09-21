@@ -1,0 +1,186 @@
+<html>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var cookie = document.createElement('div');
+cookie.innerHTML = 'Cookie';
+cookie.style.width = '100px';
+cookie.style.height = '100px';
+cookie.style.backgroundColor = '#ff0';
+cookie.style.borderRadius = '50px';
+cookie.style.cursor = 'pointer';
+cookie.style.position = 'absolute';
+cookie.style.top = '50%';
+cookie.style.left = '50%';
+cookie.style.marginLeft = '-50px';
+cookie.style.marginTop = '-50px';
+cookie.style.textAlign = 'center';
+cookie.style.lineHeight = '100px';
+cookie.style.fontSize = '20px';
+cookie.style.fontWeight = 'bold';
+cookie.style.fontFamily = 'sans-serif';
+cookie.style.color = '#000';
+cookie.style.textShadow = '0px 0px 5px #fff';
+cookie.style.boxShadow = '0px 0px 5px #000';
+document.body.appendChild(cookie);
+
+var counter = document.createElement('div');
+counter.style.position = 'fixed';
+counter.style.top = '0px';
+counter.style.right = '0px';
+counter.style.padding = '10px';
+counter.style.fontSize = '20px';
+counter.style.fontFamily = 'sans-serif';
+counter.style.fontWeight = 'bold';
+counter.style.color = '#fff';
+counter.style.backgroundColor = '#000';
+counter.style.textShadow = '0px 0px 5px #fff';
+counter.style.boxShadow = '0px 0px 5px #000';
+counter.style.borderRadius = '5px';
+counter.style.zIndex = '9999';
+counter.innerHTML = '0 cookies';
+document.body.appendChild(counter);
+
+var cookies = 0;
+cookie.onclick = function() {
+  cookies++;
+  counter.innerHTML = cookies + ' cookies';
+};
+
+var autoClickerMenu = document.createElement('div');
+autoClickerMenu.style.position = 'fixed';
+autoClickerMenu.style.top = '0px';
+autoClickerMenu.style.left = '0px';
+autoClickerMenu.style.padding = '10px';
+autoClickerMenu.style.fontSize = '20px';
+autoClickerMenu.style.fontFamily = 'sans-serif';
+autoClickerMenu.style.fontWeight = 'bold';
+autoClickerMenu.style.color = '#fff';
+autoClickerMenu.style.backgroundColor = '#000';
+autoClickerMenu.style.textShadow = '0px 0px 5px #fff';
+autoClickerMenu.style.boxShadow = '0px 0px 5px #000';
+autoClickerMenu.style.borderRadius = '5px';
+autoClickerMenu.style.zIndex = '9999';
+autoClickerMenu.innerHTML = 'Auto clickers: 0';
+document.body.appendChild(autoClickerMenu);
+
+var upgradeMenu = document.createElement('div');
+upgradeMenu.style.position = 'fixed';
+upgradeMenu.style.top = '0px';
+upgradeMenu.style.left = '0px';
+upgradeMenu.style.padding = '10px';
+upgradeMenu.style.fontSize = '20px';
+upgradeMenu.style.fontFamily = 'sans-serif';
+upgradeMenu.style.fontWeight = 'bold';
+upgradeMenu.style.color = '#fff';
+upgradeMenu.style.backgroundColor = '#000';
+upgradeMenu.style.textShadow = '0px 0px 5px #fff';
+upgradeMenu.style.boxShadow = '0px 0px 5px #000';
+upgradeMenu.style.borderRadius = '5px';
+upgradeMenu.style.zIndex = '9999';
+upgradeMenu.style.width = '200px';
+upgradeMenu.style.height = '200px';
+upgradeMenu.style.overflow = 'auto';
+upgradeMenu.innerHTML = 'Upgrades:';
+document.body.appendChild(upgradeMenu);
+
+upgradeMenu.style.top = autoClickerMenu.offsetHeight + 25 + 'px';
+
+upgradeMenu.style.height = '475px';
+
+var autoClickerUpgrade = document.createElement('div');
+autoClickerUpgrade.style.padding = '10px';
+autoClickerUpgrade.style.fontSize = '20px';
+autoClickerUpgrade.style.fontFamily = 'sans-serif';
+autoClickerUpgrade.style.fontWeight = 'bold';
+autoClickerUpgrade.style.color = '#fff';
+autoClickerUpgrade.style.backgroundColor = '#000';
+autoClickerUpgrade.style.textShadow = '0px 0px 5px #fff';
+autoClickerUpgrade.style.boxShadow = '0px 0px 5px #000';
+autoClickerUpgrade.style.borderRadius = '5px';
+autoClickerUpgrade.style.marginBottom = '10px';
+autoClickerUpgrade.innerHTML = 'Auto clicker: 10 cookies';
+upgradeMenu.appendChild(autoClickerUpgrade);
+
+var autoClickerUpgrade2 = document.createElement('div');
+autoClickerUpgrade2.style.padding = '10px';
+autoClickerUpgrade2.style.fontSize = '20px';
+autoClickerUpgrade2.style.fontFamily = 'sans-serif';
+autoClickerUpgrade2.style.fontWeight = 'bold';
+autoClickerUpgrade2.style.color = '#fff';
+autoClickerUpgrade2.style.backgroundColor = '#000';
+autoClickerUpgrade2.style.textShadow = '0px 0px 5px #fff';
+autoClickerUpgrade2.style.boxShadow = '0px 0px 5px #000';
+autoClickerUpgrade2.style.borderRadius = '5px';
+autoClickerUpgrade2.style.marginBottom = '10px';
+autoClickerUpgrade2.innerHTML = 'Auto clicker: 100 cookies';
+upgradeMenu.appendChild(autoClickerUpgrade2);
+
+var autoClickerUpgrade3 = document.createElement('div');
+autoClickerUpgrade3.style.padding = '10px';
+autoClickerUpgrade3.style.fontSize = '20px';
+autoClickerUpgrade3.style.fontFamily = 'sans-serif';
+autoClickerUpgrade3.style.fontWeight = 'bold';
+autoClickerUpgrade3.style.color = '#fff';
+autoClickerUpgrade3.style.backgroundColor = '#000';
+autoClickerUpgrade3.style.textShadow = '0px 0px 5px #fff';
+autoClickerUpgrade3.style.boxShadow = '0px 0px 5px #000';
+autoClickerUpgrade3.style.borderRadius = '5px';
+autoClickerUpgrade3.style.marginBottom = '10px';
+autoClickerUpgrade3.innerHTML = 'Auto clicker: 1000 cookies';
+upgradeMenu.appendChild(autoClickerUpgrade3);
+
+var autoClickerUpgrade4 = document.createElement('div');
+autoClickerUpgrade4.style.padding = '10px';
+autoClickerUpgrade4.style.fontSize = '20px';
+autoClickerUpgrade4.style.fontFamily = 'sans-serif';
+autoClickerUpgrade4.style.fontWeight = 'bold';
+autoClickerUpgrade4.style.color = '#fff';
+autoClickerUpgrade4.style.backgroundColor = '#000';
+autoClickerUpgrade4.style.textShadow = '0px 0px 5px #fff';
+autoClickerUpgrade4.style.boxShadow = '0px 0px 5px #000';
+autoClickerUpgrade4.style.borderRadius = '5px';
+autoClickerUpgrade4.style.marginBottom = '10px';
+autoClickerUpgrade4.innerHTML = 'Auto clicker: 10000 cookies';
+upgradeMenu.appendChild(autoClickerUpgrade4);
+
+var autoClickerUpgrade5 = document.createElement('div');
+autoClickerUpgrade5.style.padding = '10px';
+autoClickerUpgrade5.style.fontSize = '20px';
+autoClickerUpgrade5.style.fontFamily = 'sans-serif';
+autoClickerUpgrade5.style.fontWeight = 'bold';
+autoClickerUpgrade5.style.color = '#fff';
+autoClickerUpgrade5.style.backgroundColor = '#000';
+autoClickerUpgrade5.style.textShadow = '0px 0px 5px #fff';
+autoClickerUpgrade5.style.boxShadow = '0px 0px 5px #000';
+autoClickerUpgrade5.style.borderRadius = '5px';
+autoClickerUpgrade5.style.marginBottom = '10px';
+autoClickerUpgrade5.innerHTML = 'Auto clicker: 100000 cookies';
+upgradeMenu.appendChild(autoClickerUpgrade5);
+
+var autoClickerUpgrade6 = document.createElement('div');
+autoClickerUpgrade6.style.padding = '10px';
+autoClickerUpgrade6.style.fontSize = '20px';
+autoClickerUpgrade6.style.fontFamily = 'sans-serif';
+autoClickerUpgrade6.style.fontWeight = 'bold';
+autoClickerUpgrade6.style.color = '#fff';
+autoClickerUpgrade6.style.backgroundColor = '#000';
+autoClickerUpgrade6.style.textShadow = '0px 0px 5px #fff';
+autoClickerUpgrade6.style.boxShadow = '0px 0px 5px #000';
+autoClickerUpgrade6.style.borderRadius = '5px';
+autoClickerUpgrade6.style.marginBottom = '10px';
+autoClickerUpgrade6.innerHTML = 'Auto clicker: 1000000 cookies';
+upgradeMenu.appendChild(autoClickerUpgrade6);
+
+setInterval(function() {
+  cookies += autoClickers;
+  counter.innerHTML = cookies + ' cookies';
+}, 1000);
+});
+        </script>
+    </head>
+    <body style="margin: 0;">
+       
+    </body>
+</html>
