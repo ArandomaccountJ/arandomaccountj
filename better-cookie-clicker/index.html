@@ -24,7 +24,6 @@ cookie.style.color = '#000';
 cookie.style.textShadow = '0px 0px 5px #fff';
 cookie.style.boxShadow = '0px 0px 5px #000';
 document.body.appendChild(cookie);
-
 var counter = document.createElement('div');
 counter.style.position = 'fixed';
 counter.style.top = '0px';
@@ -41,8 +40,125 @@ counter.style.borderRadius = '5px';
 counter.style.zIndex = '9999';
 counter.innerHTML = '0 cookies';
 document.body.appendChild(counter);
-
 var cookies = 0;
+cookie.onclick = function() {
+cookies++;
+counter.innerHTML = cookies + ' cookies';
+};
+var autoClickerMenu = document.createElement('div');
+autoClickerMenu.style.position = 'fixed';
+autoClickerMenu.style.top = '0px';
+autoClickerMenu.style.left = '0px';
+autoClickerMenu.style.padding = '10px';
+autoClickerMenu.style.fontSize = '20px';
+autoClickerMenu.style.fontFamily = 'sans-serif';
+autoClickerMenu.style.fontWeight = 'bold';
+autoClickerMenu.style.color = '#fff';
+autoClickerMenu.style.backgroundColor = '#000';
+autoClickerMenu.style.textShadow = '0px 0px 5px #fff';
+autoClickerMenu.style.boxShadow = '0px 0px 5px #000';
+autoClickerMenu.style.borderRadius = '5px';
+autoClickerMenu.style.zIndex = '9999';
+autoClickerMenu.innerHTML = 'Auto clickers: 0';
+document.body.appendChild(autoClickerMenu);
+var upgradeMenu = document.createElement('div');
+upgradeMenu.style.position = 'fixed';
+upgradeMenu.style.top = '0px';
+upgradeMenu.style.left = '0px';
+upgradeMenu.style.padding = '10px';
+upgradeMenu.style.fontSize = '20px';
+upgradeMenu.style.fontFamily = 'sans-serif';
+upgradeMenu.style.fontWeight = 'bold';
+upgradeMenu.style.color = '#fff';
+upgradeMenu.style.backgroundColor = '#000';
+upgradeMenu.style.textShadow = '0px 0px 5px #fff';
+upgradeMenu.style.boxShadow = '0px 0px 5px #000';
+upgradeMenu.style.borderRadius = '5px';
+upgradeMenu.style.zIndex = '9999';
+upgradeMenu.style.width = '200px';
+upgradeMenu.style.height = '200px';
+upgradeMenu.style.overflow = 'auto';
+upgradeMenu.innerHTML = 'Upgrades:';
+document.body.appendChild(upgradeMenu);
+upgradeMenu.style.top = autoClickerMenu.offsetHeight + 55 + 'px';
+upgradeMenu.style.height = '445px';
+var autoClickerNames = ['Cursor', 'Grandma', 'Farm', 'Factory', 'Mine', 'Shipment', 'Alchemy Lab', 'Portal', 'Time Machine','Chancemaker', 'Antimatter Condenser', 'JavaScript Console'];
+var autoClickerCosts = [15, 100, 500, 3000, 10000, 40000, 200000, 1666666, 123456789, 3999999999, 75000000000, 999999999999];
+var autoClickerDescriptions = ['A basic cursor', 'A nice grandma to make cookies for you', 'A farm', 'Produces Cookies', 'Mines cookie ore.', 'Asks the Navy for cookies.', 'Produces potions that makes cookies.', 'Teleports cookies from another dimension.', 'Returns cookies from the past to the present.', 'Creates cookies from pure chance.', 'Creates cookies from thin air.', 'Creates cookies out of the code this game is running on!'];
+var autoClickerProduction = [0.1, 0.8, 4.7, 26.0, 140.0, 780.0, 4400.0, 26000.0, 160000.0, 1000000.0, 6500000.0, 43000000.0];
+for (var i = 0; i < autoClickerNames.length; i++) {
+  var autoClicker = document.createElement('div');
+  autoClicker.style.padding = '10px';
+  autoClicker.style.fontSize = '20px';
+  autoClicker.style.fontFamily = 'sans-serif';
+  autoClicker.style.fontWeight = 'bold';
+  autoClicker.style.color = '#fff';
+  autoClicker.style.backgroundColor = '#000';
+  autoClicker.style.textShadow = '0px 0px 5px #fff';
+  autoClicker.style.boxShadow = '0px 0px 5px #000';
+  autoClicker.style.borderRadius = '5px';
+  autoClicker.style.zIndex = '9999';
+  autoClicker.style.marginBottom = '10px';
+  autoClicker.innerHTML = autoClickerNames[i] + '<br>Cost: ' + autoClickerCosts[i] + '<br>' + autoClickerDescriptions[i];
+  upgradeMenu.appendChild(autoClicker);
+}
+var totalAutoClickers = 0
+var autoClickers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+for (var i = 0; i < autoClickerNames.length; i++) {
+  upgradeMenu.children[i].onmouseover = function() {
+    this.innerHTML = this.innerHTML + '<br>You have ' + autoClickers[i] + ' of these.';
+  };
+  upgradeMenu.children[i].onmouseout = function() {
+    this.innerHTML = this.innerHTML.substring(0, this.innerHTML.indexOf('<br>You have'));
+  };
+}
+for (var i = 0; i < autoClickerNames.length; i++) {
+  upgradeMenu.children[i].onclick = function() {
+    var index = this.innerHTML.substring(0, this.innerHTML.indexOf('<br>'));
+    var cost = this.innerHTML.substring(this.innerHTML.indexOf('Cost: ') + 6, this.innerHTML.indexOf('<br>', this.innerHTML.indexOf('Cost: ')));
+    if (cookies >= cost) {
+      cookies -= cost;
+      counter.innerHTML = cookies + ' cookies';
+      autoClickers[autoClickerNames.indexOf(index)]++;
+      totalAutoClickers++;
+      autoClickerMenu.innerHTML = 'Auto clickers: ' + totalAutoClickers
+    }
+  };
+}
+setInterval(function() {
+  for (var i = 0; i < autoClickers.length; i++) {
+    cookies += autoClickers[i] * autoClickerProduction[i];
+    counter.innerHTML = cookies + ' cookies';
+  }
+}, 1000);
+var minimizeButton = document.createElement('div');
+minimizeButton.style.position = 'fixed';
+minimizeButton.style.top = '0px';
+minimizeButton.style.left = '0px';
+minimizeButton.style.padding = '10px';
+minimizeButton.style.fontSize = '20px';
+minimizeButton.style.fontFamily = 'sans-serif';
+minimizeButton.style.fontWeight = 'bold';
+minimizeButton.style.color = '#fff';
+minimizeButton.style.backgroundColor = '#000';
+minimizeButton.style.textShadow = '0px 0px 5px #fff';
+minimizeButton.style.boxShadow = '0px 0px 5px #000';
+minimizeButton.style.borderRadius = '5px';
+minimizeButton.style.zIndex = '9999';
+minimizeButton.innerHTML = 'Minimize';
+document.body.appendChild(minimizeButton);
+minimizeButton.style.top = autoClickerMenu.offsetHeight + 10 + 'px';
+minimizeButton.onclick = function() {
+  if (upgradeMenu.style.display == 'none') {
+    upgradeMenu.style.display = 'block';
+    minimizeButton.innerHTML = 'Minimize';
+  } else {
+    upgradeMenu.style.display = 'none';
+    minimizeButton.innerHTML = 'Open';
+  }
+};
+var cursorUpgrades = ['Reinforced index finger', 'Carpal tunnel prevention cream', 'Ambidextrous', 'Thousand fingers', 'Million fingers', 'Billion fingers', 'Trillion fingers', 'Quadrillion fingers', 'Quintillion fingers', 'Sextillion fingers', 'Septillion fingers', 'Octillion fingers', 'Nonillion fingers', 'Decillion fingers', 'Undecillion fingers', 'Duodecillion fingers', 'Tredecillion fingers', 'Quattuordecillion fingers', 'Quindecillion fingers', 'Sexdecillion fingers', 'Septendecillion fingers', 'Octodecillion fingers', 'Novemdecillion fingers', 'Vigintillion fingers', 'Unvigintillion fingers', 'Duovigintillion fingers', 'Trevigintillion fingers', 'Quattuorvigintillion fingers', 'Quinvigintillion fingers', 'Sexvigintillion fingers', 'Septenvigintillion fingers', 'Octovigintillion fingers', 'Novemvigintillion fingers', 'Trigintillion fingers', 'Untrigintillion fingers', 'Duotrigintillion fingers', 'Googol fingers', 'Googolplex fingers'];
+var cursorUpgradeCosts = [50, 75, 100, 125, 200, 250, 300, 432, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000, 200000000, 500000000, 1000000000, 2000000000, 5000000000, 10000000000, 20000000000, 50000000000, 100000000000, 200000000000, 500000000000, 1000000000000, 2000000000000, 5000000000000, 10000000000000, 20000000000000, 50000000000000, 100000000000000, 200000000000000, 500000000000000, 1000000000000000, 2000000000000000, 5000000000000000, 10000000000000000, 20000000000000000, 50000000000000000, 100000000000000000, 200000000000000000, 5000000000000000000, 1000000000000000000, 2000000000000000000, 50000000000000000000, 100000000000000000000, 200000000000000000000, 500000000000000000000, 1000000000000000000000, 2000000000000000000000, 5000000000000000000000, 10000000000000000000000, 20000000000000000000000, 50000000000000000000000, 100000000000000000000000, 200000000000000000000000, 500000000000000000000000, 1000000000000000000000000, 2000000000000000000000000, 5000000000000000000000000, 10000000000000000000000000, 20000000000000000000000000, 50000000000000000000000000, 100000000000000000000000000, 200000000000000000000000000, 50000000000000000000000000];var cookies = 0;
 cookie.onclick = function() {
   cookies++;
   counter.innerHTML = cookies + ' cookies';
